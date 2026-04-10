@@ -10,6 +10,8 @@ export default function Navbar({ page, setPage, playMusic }) {
   useEffect(() => {
     if (!playMusic) {
         setMuted(true);
+    } else {
+        setMuted(false);
     }
     }, [playMusic]);
 
