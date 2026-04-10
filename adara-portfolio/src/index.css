@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'GlacialIndifference';
+  src: url('./assets/fonts/GlacialIndifference-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'GlacialIndifference';
+  src: url('./assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'PinyonScript';
+  src: url('./assets/fonts/PinyonScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'GlacialIndifference', sans-serif;
+  background-color: #ffffff;
+  color: #6d5855;
+}
+
+.font-script {
+  font-family: 'PinyonScript', cursive;
+}
