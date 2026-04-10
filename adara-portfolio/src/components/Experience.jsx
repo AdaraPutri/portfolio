@@ -1,3 +1,6 @@
 export default function Experience() {
-  return <div>Experience</div>
+  return (
+    <div className="min-h-screen bg-[#6d5855]">
+    </div>
+  )
 }
