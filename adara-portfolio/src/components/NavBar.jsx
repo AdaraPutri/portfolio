@@ -9,11 +9,11 @@ export default function Navbar({ page, setPage, playMusic }) {
 
   useEffect(() => {
     if (!playMusic) {
-        setMuted(true);
+      setMuted(true);
     } else {
-        setMuted(false);
+      setMuted(false);
     }
-    }, [playMusic]);
+  }, [playMusic]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -37,48 +37,52 @@ export default function Navbar({ page, setPage, playMusic }) {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-6 bg-transparent">
+    <nav className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-10 py-6 bg-transparent">
 
       <audio ref={audioRef} loop src={carinoSong} />
 
-      {/* AP Monogram */}
-      <div
-        onClick={() => setPage("home")}
-        className={`font-script cursor-pointer border rounded-full relative ${
-          isWhiteBg ? "text-brown border-brown" : "text-white border-white"
-        }`}
-        style={{ width: '56px', height: '56px', fontSize: '35px' }}
-      >
-        <span style={{ position: 'absolute', top: '10px', left: '8px', lineHeight: '1' }}>A</span>
-        <span style={{ position: 'absolute', bottom: '0px', right: '6px', lineHeight: '1' }}>P</span>
+      {/* Left - AP Monogram */}
+      <div className="flex justify-start">
+        <div
+          onClick={() => setPage("home")}
+          className={`font-script cursor-pointer border rounded-full relative ${
+            isWhiteBg ? "text-brown border-brown" : "text-white border-white"
+          }`}
+          style={{ width: '56px', height: '56px', fontSize: '35px' }}
+        >
+          <span style={{ position: 'absolute', top: '10px', left: '8px', lineHeight: '1' }}>A</span>
+          <span style={{ position: 'absolute', bottom: '0px', right: '6px', lineHeight: '1' }}>P</span>
+        </div>
       </div>
 
-      {/* Nav Links */}
-      <div className={`flex gap-1 rounded-full px-2 py-2 ${
-        isWhiteBg ? "bg-brown-light" : "bg-[#7a6b6a]"
-      }`}>
-        {links.map((link) => (
-          <button
-            key={link}
-            onClick={() => setPage(link)}
-            style={{ fontSize: '16px' }}
-            className={`capitalize px-5 py-2 rounded-full font-bold transition-all duration-200 ${
-              page === link
-                ? isWhiteBg
-                  ? "bg-brown-pill text-black"
-                  : "bg-[#ada1a0] text-white"
-                : isWhiteBg
-                  ? "text-black hover:bg-brown-pill hover:text-black"
-                  : "text-white hover:bg-[#ada1a0]"
-            }`}
-          >
-            {link}
-          </button>
-        ))}
+      {/* Center - Nav Links */}
+      <div className="flex justify-center">
+        <div className={`flex gap-1 rounded-full px-2 py-2 ${
+          isWhiteBg ? "bg-brown-light" : "bg-[#7a6b6a]"
+        }`}>
+          {links.map((link) => (
+            <button
+              key={link}
+              onClick={() => setPage(link)}
+              style={{ fontSize: '16px' }}
+              className={`capitalize px-5 py-2 rounded-full font-bold transition-all duration-200 ${
+                page === link
+                  ? isWhiteBg
+                    ? "bg-brown-pill text-black"
+                    : "bg-[#ada1a0] text-white"
+                  : isWhiteBg
+                    ? "text-black hover:bg-brown-pill hover:text-black"
+                    : "text-white hover:bg-[#ada1a0]"
+              }`}
+            >
+              {link}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Right side: mute + resume */}
-      <div className="flex items-center gap-3">
+      {/* Right - Mute + Resume */}
+      <div className="flex justify-end items-center gap-3">
 
         {/* Mute/Unmute Button */}
         <div
@@ -104,17 +108,17 @@ export default function Navbar({ page, setPage, playMusic }) {
 
         {/* Resume Button */}
         <a
-        href={require("../assets/resume.pdf")}
-        download="Adara_Putri_Resume.pdf"
-        style={{ fontSize: '16px' }}
-        className={`flex items-center gap-2 px-5 py-2 rounded-full hover:opacity-90 transition-all duration-200 ${
+          href={require("../assets/resume.pdf")}
+          download="Adara_Putri_Resume.pdf"
+          style={{ fontSize: '16px' }}
+          className={`flex items-center gap-2 px-5 py-2 rounded-full hover:opacity-90 transition-all duration-200 ${
             isWhiteBg ? "bg-brown text-white" : "bg-white text-brown"
-        }`}
+          }`}
         >
-        Resume
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          Resume
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
+          </svg>
         </a>
       </div>
     </nav>

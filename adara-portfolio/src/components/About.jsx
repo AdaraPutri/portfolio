@@ -9,13 +9,11 @@ import danceImg from "../assets/dance.jpg";
 
 const slides = [
   {
-    img: bciImg,
-    title: "BCI Enthusiast",
-    subtitle: "Brain-Computer Interface Research",
+    img: stemImg,
+    title: "STEM Workshop Leader",
+    subtitle: "UBC Okanagan",
     bullets: [
-      "Built a makeshift EOG-based BCI that lets you play Chrome's Dino game by blinking",
-      "Working with Neurosity's The Crown, a research-grade EEG headset, for my honours project",
-      "Just getting started — always looking for the next experiment to run!",
+      "Led K-12 STEM workshops introducing younger students to technology (encryption, human-computer interfaces, and more!)",
     ]
   },
   {
@@ -29,11 +27,14 @@ const slides = [
     ]
   },
   {
-    img: stemImg,
-    title: "STEM Workshop Leader",
-    subtitle: "UBC Okanagan",
+    img: taekwondoImg,
+    title: "Founder & President",
+    subtitle: "UBCO Taekwondo Club",
     bullets: [
-      "Led K-12 STEM workshops introducing younger students to technology (encryption, human-computer interfaces, and more!)",
+      "Founded from scratch — still running today",
+      "Grew paying membership by 650%",
+      "Organized campus-wide self-defense workshop with Campus Security",
+      "Coordinated the club's first official belt testing",
     ]
   },
   {
@@ -49,7 +50,7 @@ const slides = [
   {
     img: permikaImg,
     title: "Event Coordinator",
-    subtitle: "PERMIKA",
+    subtitle: "PERMIKA Nasional",
     bullets: [
       "Co-led events for 80+ Indonesian students in Canada",
       "Created educational content reaching over 11,300 views",
@@ -57,14 +58,13 @@ const slides = [
     ]
   },
   {
-    img: taekwondoImg,
-    title: "Founder & President",
-    subtitle: "UBCO Taekwondo Club",
+    img: bciImg,
+    title: "BCI Enthusiast",
+    subtitle: "Brain-Computer Interface Research",
     bullets: [
-      "Founded from scratch — still running today",
-      "Grew paying membership by 650%",
-      "Organized campus-wide self-defense workshop with Campus Security",
-      "Coordinated the club's first official belt testing",
+      "Built a makeshift EOG-based BCI that lets you play Chrome's Dino game by blinking",
+      "Working with Neurosity's The Crown, a research-grade EEG headset, for my honours project",
+      "Just getting started — always looking for the next experiment to run!",
     ]
   },
   {
@@ -78,17 +78,16 @@ const slides = [
 ];
 
 export default function About() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(2);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const prev = () => setActiveIndex((i) => (i - 1 + slides.length) % slides.length);
-  const next = () => setActiveIndex((i) => (i + 1) % slides.length);
-
   const getVisibleSlides = () => {
+    const prev2 = (activeIndex - 2 + slides.length) % slides.length;
     const prev1 = (activeIndex - 1 + slides.length) % slides.length;
     const next1 = (activeIndex + 1) % slides.length;
-    return [prev1, activeIndex, next1];
-  };
+    const next2 = (activeIndex + 2) % slides.length;
+    return [prev2, prev1, activeIndex, next1, next2];
+};
 
   const visible = getVisibleSlides();
 
@@ -96,53 +95,51 @@ export default function About() {
     <div className="min-h-screen bg-[#6d5855] flex flex-col items-center justify-center px-8 pt-24 pb-12">
 
       {/* Title */}
-      <h1 className="font-script text-white mb-12" style={{ fontSize: '80px' }}>
+      <h1 className="font-script text-white mb-5" style={{ fontSize: '80px' }}>
         Who is Adara?
       </h1>
 
       {/* Carousel */}
-      <div className="flex items-center gap-6 w-full max-w-5xl justify-center">
-
-        {/* Left arrow */}
-        <button onClick={prev} className="text-white hover:opacity-70 transition-all flex-shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        <div className="flex items-center w-full max-w-6xl justify-center relative">
 
         {/* Slides */}
         <div className="flex items-center gap-4 justify-center">
-          {visible.map((slideIndex, position) => {
+            {visible.map((slideIndex, position) => {
             const slide = slides[slideIndex];
-            const isCenter = position === 1;
+            const isCenter = position === 2;
+            const isAdjacent = position === 1 || position === 3;
             const isHovered = hoveredIndex === slideIndex;
 
+            const width = isCenter ? '310px' : isAdjacent ? '240px' : '180px';
+            const height = isCenter ? '365px' : isAdjacent ? '290px' : '220px';
+            const opacity = isCenter ? 1 : isAdjacent ? 0.75 : 0.5;
+
             return (
-              <div
-                key={slideIndex}
-                onMouseEnter={() => setHoveredIndex(slideIndex)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setActiveIndex(slideIndex)}
-                className="relative overflow-hidden cursor-pointer flex-shrink-0 transition-all duration-300"
-                style={{
-                    width: '310px',
-                    height: '365px',
+                <div
+                    key={slideIndex}
+                    onMouseEnter={() => setHoveredIndex(slideIndex)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={() => setActiveIndex(slideIndex)}
+                    className="relative overflow-hidden flex-shrink-0 transition-all duration-300"
+                    style={{
+                    width,
+                    height,
                     borderRadius: '5px',
-                    opacity: isCenter ? 1 : 0.75,
+                    opacity,
                     border: '2px solid white',
-                }}
+                    cursor: 'pointer',
+                    }}
                 >
-                {/* Photo */}
                 <img
                     src={slide.img}
                     alt={slide.title}
                     className="w-full h-full object-cover object-top transition-all duration-300"
                 />
 
-                {/* Brown overlay on hover */}
+                {/* Brown overlay on hover — center only */}
                 <div
                     className={`absolute inset-0 flex flex-col justify-center px-6 transition-all duration-300 ${
-                    isHovered ? 'opacity-100' : 'opacity-0'
+                    isHovered && isCenter ? 'opacity-100' : 'opacity-0'
                     }`}
                     style={{ backgroundColor: 'rgba(109, 88, 85, 0.85)' }}
                 >
@@ -161,18 +158,11 @@ export default function About() {
                     ))}
                     </ul>
                 </div>
-                </div>
+            </div>
             );
-          })}
+        })}
         </div>
-
-        {/* Right arrow */}
-        <button onClick={next} className="text-white hover:opacity-70 transition-all flex-shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
+        </div>
 
       {/* Dot indicators */}
       <div className="flex gap-2 mt-8">
@@ -189,7 +179,7 @@ export default function About() {
 
       {/* Hobbies */}
       <p className="text-white/80 mt-10 text-center" style={{ fontSize: '16px' }}>
-        In my free time, I also run, weightlift, dance, arrange flowers, and read!
+        In my free time, I also run, weightlift, arrange flowers, and read!
       </p>
       <p className="text-white/80 mt-1 text-center" style={{ fontSize: '16px' }}>
         Currently working through <span className="italic font-bold">'Americanah'</span> by Chimamanda Ngozi Adichie and <span className="italic font-bold">'The Highly Sensitive Person'</span> by Elaine N. Aaron
