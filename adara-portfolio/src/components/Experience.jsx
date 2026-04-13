@@ -16,6 +16,7 @@ const experiences = [
     description:
       "Designed and built a full-stack résumé and portfolio platform end-to-end — from UI/UX design and frontend implementation in React to backend development in FastAPI and Python, including automated analysis pipelines, validation logic, deduplication, and testing across Agile sprint cycles.",
     logo: ubcoCareerLogo,
+    date: "Sep 2025 – Present",
   },
   {
     role: "Backend Developer",
@@ -23,6 +24,7 @@ const experiences = [
     description:
       "Built and maintained Python analytics pipelines using GitHub API, JSON, and CSV data across 20+ capstone teams from different academic years, applying LLM-assisted labeling and Markov modelling to analyze development patterns.",
     logo: ubcLogo,
+    date: "Sep 2025 – Present",
   },
   {
     role: "Go-To-Market Strategy Extern",
@@ -30,6 +32,7 @@ const experiences = [
     description:
       "Researched the clinical trials software landscape and conducted market and competitor analysis to identify customer segments and opportunities, synthesizing findings into go-to-market recommendations.",
     logo: preludeLogo,
+    date: "Aug – Nov 2025",
   },
   {
     role: "Data Analytics Engineer",
@@ -37,6 +40,7 @@ const experiences = [
     description:
       "Analyzed large-scale student activity data from a question bank platform using Python, R, Excel, and Tableau, building Markov models, clustering workflows, and z-score filtering methods to identify behavioral trends across student groups.",
     logo: ubcLogo,
+    date: "May 2024 – Sep 2025",
   },
 ];
 
@@ -100,7 +104,7 @@ export default function Experience() {
         {/* Vertical line */}
         <div
           className="absolute top-0 bottom-0 w-px bg-[#6d5855]/30"
-          style={{ left: "58px" }}
+          style={{ left: "31px" }}
         />
 
         <div className="flex flex-col gap-10">
@@ -120,17 +124,22 @@ export default function Experience() {
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-1 pt-1">
-                <p className="text-black font-bold" style={{ fontSize: "17px" }}>
-                  {exp.role}
-                </p>
+                <div className="flex flex-col gap-1 pt-1 flex-1">
+                <div className="flex justify-between items-start">
+                    <p className="text-black font-bold" style={{ fontSize: "17px" }}>
+                    {exp.role}
+                    </p>
+                    <p className="text-[#6d5855] ml-4 whitespace-nowrap" style={{ fontSize: "13px" }}>
+                    {exp.date}
+                    </p>
+                </div>
                 <p className="text-[#6d5855] italic" style={{ fontSize: "14px" }}>
-                  {exp.org}
+                    {exp.org}
                 </p>
                 <p className="text-black/70 mt-1 leading-relaxed" style={{ fontSize: "14px" }}>
-                  {exp.description}
+                    {exp.description}
                 </p>
-              </div>
+                </div>
             </div>
           ))}
         </div>
