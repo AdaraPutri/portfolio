@@ -108,7 +108,7 @@ export default function Navbar({ page, setPage, playMusic }) {
 
         {/* Resume Button */}
         <a
-          href={require("../assets/resume.pdf")}
+          href="/resume.pdf"
           download="Adara_Putri_Resume.pdf"
           style={{ fontSize: '16px' }}
           className={`flex items-center gap-2 px-5 py-2 rounded-full hover:opacity-90 transition-all duration-200 ${

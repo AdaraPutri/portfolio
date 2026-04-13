@@ -21,7 +21,7 @@ const experiences = [
     role: "Backend Developer",
     org: "@ UBC Bowen Hui Lab",
     description:
-      "Built and maintained Python analytics pipelines using GitHub API, JSON, and CSV data across 22 capstone teams, applying LLM-assisted labeling and Markov modelling to analyze development patterns.",
+      "Built and maintained Python analytics pipelines using GitHub API, JSON, and CSV data across 20+ capstone teams from different academic years, applying LLM-assisted labeling and Markov modelling to analyze development patterns.",
     logo: ubcLogo,
   },
   {
@@ -35,7 +35,7 @@ const experiences = [
     role: "Data Analytics Engineer",
     org: "@ UBC Bowen Hui Lab",
     description:
-      "Analyzed large-scale student activity data using Python, R, Excel, and Tableau, building Markov models, clustering workflows, and z-score filtering methods to identify behavioral trends across student groups.",
+      "Analyzed large-scale student activity data from a question bank platform using Python, R, Excel, and Tableau, building Markov models, clustering workflows, and z-score filtering methods to identify behavioral trends across student groups.",
     logo: ubcLogo,
   },
 ];

@@ -13,7 +13,7 @@ const slides = [
     title: "STEM Workshop Leader",
     subtitle: "UBC Okanagan",
     bullets: [
-      "Led K-12 STEM workshops introducing younger students to technology (encryption, human-computer interfaces, and more!)",
+      "Led K-12 STEM workshops introducing younger students to technology (encryption, human-computer interactions, and more!)",
     ]
   },
   {
